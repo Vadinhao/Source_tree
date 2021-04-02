@@ -67,6 +67,8 @@ public:
     virtual string new_sides(Triangle tr) const = 0;
     virtual string ex_or_cont() const = 0;
     virtual string language() const = 0;
+    virtual string catching_errors_type() const = 0;
+    virtual string catching_errors_value() const = 0;
     virtual ~Translation() {};
 };
 
@@ -82,7 +84,7 @@ class EngTranslation : public Translation
     }
     virtual string bad_input() const override
     {
-        return "You have not entered a triangle, try again";
+        return "You have not entered a triangle";
     }
     virtual string your_tr() const override
     {
@@ -124,6 +126,14 @@ class EngTranslation : public Translation
     {
         return "Enter num for select language:\n0.English\n1.Ukranian";
     }
+    virtual string catching_errors_type() const override
+    {
+        return "You entered a non - integer value";
+    }
+    virtual string catching_errors_value() const override
+    {
+        return "You entered the wrong number";
+    }
 };
 
 class UkTranslation : public Translation
@@ -138,7 +148,7 @@ class UkTranslation : public Translation
     }
     virtual string bad_input() const override
     {
-        return "Ви ввели не трикутник, спробуйте ще раз";
+        return "Ви не ввели трикутник";
     }
     virtual string your_tr() const override
     {
@@ -162,7 +172,7 @@ class UkTranslation : public Translation
     }
     virtual string mult() const override
     {
-        return "Ввдiть коефiцiєнт для змiни розмiрiв сторін трикутника:";
+        return "Ввдiть коефiцiєнт для змiни розмiрiв сторiн трикутника:";
     }
     virtual string new_sides(Triangle tr) const override
     {
@@ -174,10 +184,18 @@ class UkTranslation : public Translation
     }
     virtual string ex_or_cont() const override
     {
-        return "Натисніть 0 для виходу або iншу клавiшу для продовження";
+        return "Натиснiть 0 для виходу або iншу клавiшу для продовження";
     }
     virtual string language() const override
     {
         return "Введiть номер для вибору мови:\n0.English\n1.Ukranian";
+    }
+    virtual string catching_errors_type() const override
+    {
+        return "Ви ввели не цiле число";
+    }
+    virtual string catching_errors_value() const override
+    {
+        return "Ви ввели не вiрне значення";
     }
 };
