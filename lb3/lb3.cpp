@@ -10,7 +10,7 @@ int main()
     vector <Triangle> vec_triangle;
     double sides[3]{ 0,0,0 };
     bool b = true, er = false;
-    int ind = 0, ch = 0, languages = 0;
+    int ind = 0, ch = 0, languages = 0, count = 0;
     do
     {
         //
@@ -98,6 +98,7 @@ int main()
             Triangle temp(sides);
             if (temp.Istriangle())
             {
+                count++;
                 vec_triangle.push_back(temp);
             }
             else if (vec_triangle.size() == 0)
@@ -134,6 +135,10 @@ int main()
                             throw tr->catching_errors_type();
                         }
                         if (ind < -1 && ind < vec_triangle.size())
+                        {
+                            throw tr->catching_errors_value();
+                        }
+                        if (ind > count)
                         {
                             throw tr->catching_errors_value();
                         }
@@ -304,6 +309,7 @@ int main()
                 Triangle temp(sides);
                 if (temp.Istriangle())
                 {
+                    count++;
                     vec_triangle.push_back(temp);
                 }
                 else if (vec_triangle.size() == 0)
@@ -318,6 +324,7 @@ int main()
             {
                 auto iter = vec_triangle.cbegin();
                 vec_triangle.erase(iter + ind);
+                count--;
                 //
                 cout << tr->your_tr() << endl;
                 if (vec_triangle.size() != 0)

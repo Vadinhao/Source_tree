@@ -27,12 +27,12 @@ private:
     double A;
     double B;
     double C;
-    double perimeter;
-    double square;
-    double* angle;
+    //
     double Perimeter() const;
     double Square() const;
-    double* Angle(double* angl);
+    double AngleA() const;
+    double AngleB() const;
+    double AngleC() const;
 public:
     Triangle();
     Triangle(double sides[]);
@@ -45,12 +45,15 @@ public:
     double Get_C() const;
     double Get_Perimeter() const;
     double Get_Square() const;
-    double* Get_Angle() const;
+    double Get_AngleA() const;
+    double Get_AngleB() const;
+    double Get_AngleC() const;
     bool Istriangle() const;
     Triangle operator*(double k);
     string toString() const;
     friend Triangle operator*(double k, Triangle tr);
     friend ostream& operator<<(ostream& os, const Triangle& tr);
+    friend string to_string(const Triangle& tr);
 };
 
 class Translation : public Triangle
@@ -94,7 +97,7 @@ class EngTranslation : public Translation
     {
         string s1;
         std::ostringstream ostr;
-        ostr << "A: " << tr.Get_A() << ", B: " << tr.Get_B() << ", C: " << tr.Get_C() << "\nPerimeter: " << tr.Get_Perimeter() << "\nSquare: " << tr.Get_Square() << "\nAngles(a,b,c): " << tr.Get_Angle()[0] << ", " << tr.Get_Angle()[1] << ", " << tr.Get_Angle()[2];
+        ostr << "A: " << tr.Get_A() << ", B: " << tr.Get_B() << ", C: " << tr.Get_C() << "\nPerimeter: " << tr.Get_Perimeter() << "\nSquare: " << tr.Get_Square() << "\nAngles(a,b,c): " << tr.Get_AngleA() << ", " << tr.Get_AngleB() << ", " << tr.Get_AngleC();
         s1 = ostr.str();
         return s1;
     }
@@ -114,7 +117,7 @@ class EngTranslation : public Translation
     {
         string s1;
         std::ostringstream ostr;
-        ostr << " New sides of triangles: A: " << tr.Get_A() << ", B: " << tr.Get_B() << ", C: " << tr.Get_C() << "\nPerimeter: " << tr.Get_Perimeter() << "\nSquare: " << tr.Get_Square() << "\nAngles(a,b,c): " << tr.Get_Angle()[0] << ", " << tr.Get_Angle()[1] << ", " << tr.Get_Angle()[2];
+        ostr << " New sides of triangles: A: " << tr.Get_A() << ", B: " << tr.Get_B() << ", C: " << tr.Get_C() << "\nPerimeter: " << tr.Get_Perimeter() << "\nSquare: " << tr.Get_Square() << "\nAngles(a,b,c): " << tr.Get_AngleA() << ", " << tr.Get_AngleB() << ", " << tr.Get_AngleC();
         s1 = ostr.str();
         return s1;
     }
@@ -158,7 +161,7 @@ class UkTranslation : public Translation
     {
         string s1;
         std::ostringstream ostr;
-        ostr << "A: " << tr.Get_A() << ", B: " << tr.Get_B() << ", C: " << tr.Get_C() << "\nПериметр: " << tr.Get_Perimeter() << "\nПлоща: " << tr.Get_Square() << "\nКути(a,b,c): " << tr.Get_Angle()[0] << ", " << tr.Get_Angle()[1] << ", " << tr.Get_Angle()[2];
+        ostr << "A: " << tr.Get_A() << ", B: " << tr.Get_B() << ", C: " << tr.Get_C() << "\nПериметр: " << tr.Get_Perimeter() << "\nПлоща: " << tr.Get_Square() << "\nКути(a,b,c): " << tr.Get_AngleA() << ", " << tr.Get_AngleB() << ", " << tr.Get_AngleB();
         s1 = ostr.str();
         return s1;
     }
@@ -178,7 +181,7 @@ class UkTranslation : public Translation
     {
         string s1;
         std::ostringstream ostr;
-        ostr << " Новi сторони трикутника: A: " << tr.Get_A() << ", B: " << tr.Get_B() << ", C: " << tr.Get_C() << "\nПериметр: " << tr.Get_Perimeter() << "\nПлоща: " << tr.Get_Square() << "\nКути(a,b,c): " << tr.Get_Angle()[0] << ", " << tr.Get_Angle()[1] << ", " << tr.Get_Angle()[2];
+        ostr << " Новi сторони трикутника: A: " << tr.Get_A() << ", B: " << tr.Get_B() << ", C: " << tr.Get_C() << "\nПериметр: " << tr.Get_Perimeter() << "\nПлоща: " << tr.Get_Square() << "\nКути(a,b,c): " << tr.Get_AngleA() << ", " << tr.Get_AngleB() << ", " << tr.Get_AngleC();
         s1 = ostr.str();
         return s1;
     }
